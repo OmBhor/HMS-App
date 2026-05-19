@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+
+# env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# logs
+logs/
+*.log
+
+# frontend build
+build/
+
+# OS files
+.DS_Store
+
+# optional
+uploads/
+temp/

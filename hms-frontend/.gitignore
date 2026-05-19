@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# backend env
+.env
+
+# logs
+logs/
+*.log
+
+# optional (if using uploads/temp files)
+uploads/
+temp/
