@@ -1,0 +1,110 @@
+/* Page background */
+.signin-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e6f7ff, #f0faff);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card */
+.signin-card {
+  background: #ffffff;
+  padding: 2.5rem;
+  width: 350px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Title */
+.title {
+  color: #0a6ebd;
+  margin-bottom: 5px;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Form */
+.form-group {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+/* Input focus */
+.form-group input:focus {
+  outline: none;
+  border-color: #0a6ebd;
+  box-shadow: 0 0 5px rgba(10, 110, 189, 0.2);
+}
+
+/* Primary button */
+.primary-btn {
+  width: 100%;
+  padding: 10px;
+  background: #0a6ebd;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.primary-btn:hover {
+  background: #095ea8;
+}
+
+.primary-btn:disabled {
+  background: #8bbde6;
+  cursor: not-allowed;
+}
+
+/* Secondary button */
+.secondary-btn {
+  margin-top: 10px;
+  background: transparent;
+  color: #0a6ebd;
+  border: 1px solid #0a6ebd;
+  padding: 8px;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.secondary-btn:hover {
+  background: #0a6ebd;
+  color: #ffffff;
+}
+
+/* Redirect text */
+.redirect-text {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #777;
+}

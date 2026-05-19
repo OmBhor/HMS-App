@@ -1,0 +1,80 @@
+.navbar {
+  height: 72px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  border-bottom: 1px solid #e5e7eb;
+  font-family: Arial, sans-serif;
+}
+
+/* Brand */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo span {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2563eb; /* matches homepage blue */
+  letter-spacing: 0.3px;
+}
+
+/* Nav Links */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 36px;
+}
+
+.navbar-links li a {
+  text-decoration: none;
+  color: #1f2937;
+  font-size: 15px;
+  font-weight: 600;
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.2s ease;
+}
+
+.navbar-links li a:hover {
+  color: #2563eb;
+}
+
+/* subtle underline */
+.navbar-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background-color: #2563eb;
+  transition: width 0.2s ease;
+}
+
+.navbar-links li a:hover::after {
+  width: 100%;
+}
+
+/* Login Button */
+.navbar-login button {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.navbar-login button:hover {
+  background-color: #1d4ed8;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+}
