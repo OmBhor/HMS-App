@@ -38,7 +38,7 @@ import AppointmentForm from "./component/AppointmentForm";
 import SignUp from "./component/SignUp";
 import SignIn from "./component/SignIn";
 import Navbar from "./component/Navbar";
-
+import AdminPanel from "./component/AdminPanel";
 import { fetchCurrentUser } from "./utils/api";
 import { removeToken } from "./utils/auth";
 
@@ -77,6 +77,7 @@ function App() {
         />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/admin" element={<AdminPanel/>}/>
       </Routes>
     </>
   );

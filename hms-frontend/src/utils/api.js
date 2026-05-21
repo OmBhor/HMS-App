@@ -1,5 +1,6 @@
 
 import { getToken } from "./auth";
+import axios from "axios";
 
 export const fetchCurrentUser = async () => {
   const token = getToken();
@@ -19,4 +20,14 @@ export const fetchCurrentUser = async () => {
   }
 
   return response.json();
+};
+
+
+
+export const createSpecialization = (data) => {
+  return axios.post("http://localhost:5000/api/specialization/create", data);
+};
+
+export const deleteSpecialization = (id) => {
+  return axios.delete(`http://localhost:5000/api/specialization/${id}`);
 };
