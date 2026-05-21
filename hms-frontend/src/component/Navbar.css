@@ -55,6 +55,8 @@
   transition: width 0.2s ease;
 }
 
+
+
 .navbar-links li a:hover::after {
   width: 100%;
 }
@@ -77,4 +79,14 @@
 .navbar-login button:hover {
   background-color: #1d4ed8;
   box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+}
+
+
+.admin-badge {
+  background: red;
+  color: white;
+  padding: 2px 6px;
+  margin-left: 8px;
+  border-radius: 5px;
+  font-size: 12px;
 }

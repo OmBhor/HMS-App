@@ -3,7 +3,7 @@ const bcryptjs = require("bcryptjs");
 
 async function UserSignUP(req, res) {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, isAdmin } = req.body;
 
     if (!name) {
       return res.status(400).json({ message: "Name is required", error: true });
@@ -34,6 +34,7 @@ async function UserSignUP(req, res) {
       name,
       email,
       password: hashedPassword,
+      isAdmin
     });
 
     return res.status(201).json({
@@ -43,6 +44,7 @@ async function UserSignUP(req, res) {
         id: userDetails._id,
         name: userDetails.name,
         email: userDetails.email,
+        isAdmin: userDetails.isAdmin
       },
     });
   } catch (error) {
