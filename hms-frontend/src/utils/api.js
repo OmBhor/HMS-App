@@ -43,3 +43,13 @@ export const createDoctor = (data) => {
   return axios.post("http://localhost:5000/api/doctor/create", data)
 }
 
+export const deleteDoctor = (id) =>{
+  return axios.delete(`http://localhost:5000/api/doctor/${id}`);
+}
+
+
+export const getDoctor = async() => {
+  const res  = await axios.get("http://localhost:5000/api/doctor");
+
+  return res.data
+}
