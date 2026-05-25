@@ -1,0 +1,64 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-card {
+  background: #f5f7fa;
+  padding: 30px;
+  border-radius: 18px;
+  width: 400px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.form-title {
+  text-align: center;
+  color: #1f5f94;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+/* Delete button */
+.delete-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #e53935;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #c62828;
+}
+
+.cancel-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #ccc;
+  border: none;
+  border-radius: 10px;
+}

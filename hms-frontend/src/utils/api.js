@@ -31,3 +31,15 @@ export const createSpecialization = (data) => {
 export const deleteSpecialization = (id) => {
   return axios.delete(`http://localhost:5000/api/specialization/${id}`);
 };
+
+
+export const getSpecializations = async () => {
+  const res = await axios.get("http://localhost:5000/api/specialization");
+  console.log("line 38", res)
+  return res.data;
+};
+
+export const createDoctor = (data) => {
+  return axios.post("http://localhost:5000/api/doctor/create", data)
+}
+

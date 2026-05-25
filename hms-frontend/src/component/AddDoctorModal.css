@@ -1,0 +1,112 @@
+/* ✅ Overlay (dark transparent background) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* ✅ Card container (main form box) */
+.form-card {
+  background: #f5f7fa;
+  padding: 30px 35px;
+  border-radius: 18px;
+  width: 420px;
+  max-width: 90%;
+  box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* ✅ Title */
+.form-title {
+  text-align: center;
+  color: #1f5f94;
+  margin-bottom: 25px;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+/* ✅ Form group */
+.form-group {
+  margin-bottom: 18px;
+}
+
+/* ✅ Label */
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #444;
+}
+
+/* ✅ Input fields */
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* ✅ Input focus effect */
+.form-group input:focus {
+  border-color: #2fa4e7;
+  box-shadow: 0 0 6px rgba(47, 164, 231, 0.4);
+}
+
+/* ✅ Submit button */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #2fa4e7, #1f5f94);
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ✅ Hover effect */
+.submit-btn:hover {
+  background: linear-gradient(135deg, #1f8ad1, #174a78);
+  transform: translateY(-1px);
+}
+
+/* ✅ Cancel button */
+.cancel-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* ✅ Cancel hover */
+.cancel-btn:hover {
+  background-color: #c7c7c7;
+}
+
+/* ✅ Smooth animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
