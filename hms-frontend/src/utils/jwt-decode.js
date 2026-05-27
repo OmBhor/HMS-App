@@ -9,6 +9,7 @@ export const getUserFromToken = () => {
   try {
     return jwtDecode(token);
   } catch (err) {
+    localStorage.removeItem("token");
     return null;
   }
 };

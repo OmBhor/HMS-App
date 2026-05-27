@@ -12,7 +12,13 @@ export const fetchCurrentUser = async () => {
   });
 
   if (!response.ok) {
-    throw new Error("Unauthorized");
+
+    //throw new Error("Unauthorized");
+
+    
+ localStorage.removeItem("token"); // remove invalid token
+    return null;
+
   }
 
   return response.json();
