@@ -20,27 +20,63 @@ async function getSpecializtion(req, res) {
   
 }
 
+// async function createSpecialization(req, res) {
+//   try {
+//     const specBody = req.body;
+
+//     const createSpec = await SpecModel.create(specBody);
+
+//     return res.status(201).json({
+//       data: createSpec,
+//       message: "Specialization created successfully",
+//       success: true,
+//       error: false,
+//     });
+//   } catch (err) {
+//     return res.status(500).json({
+//       messaage: "Specialization not created",
+//       error: true,
+//       success: false,
+//       data: err,
+//     });
+//   }
+// }
+
 async function createSpecialization(req, res) {
   try {
-    const specBody = req.body;
 
-    const createSpec = await SpecModel.create(specBody);
+    
+    console.log("BODY:", req.body);
+    console.log("FILE:", req.file);
+
+    const { specialization, description } = req.body;
+
+   // const image = req.file ? req.file.path : "";
+   
+const image = req.file
+      ? `/uploads/${req.file.filename}`   // ✅ ONLY store relative path
+      : "";
+
+
+    const createSpec = await SpecModel.create({
+      specialization,
+      description,
+      image
+    });
 
     return res.status(201).json({
       data: createSpec,
       message: "Specialization created successfully",
       success: true,
-      error: false,
     });
   } catch (err) {
     return res.status(500).json({
-      messaage: "Specialization not created",
+      message: "Specialization not created",
       error: true,
-      success: false,
-      data: err,
     });
   }
 }
+
 
 async function deleteSpecialization(req, res) {
   try {

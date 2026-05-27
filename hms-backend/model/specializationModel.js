@@ -10,6 +10,10 @@ const specSchema = new mongoose.Schema({
     
   },
 
+ image: {
+    type: String   // ✅ store file path or URL
+  },
+
   doctors: [
     {
       type: mongoose.Schema.Types.ObjectId,

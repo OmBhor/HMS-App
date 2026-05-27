@@ -24,7 +24,7 @@ app.use("/api/doctor", docRouter);
 app.use("/api/specialization", specRouter);
 app.use("/api/appointment", appointmentRouter);
 app.use("/api/login", authRouter);
-
+app.use("/uploads", express.static("uploads"));
 
 app.get("/", (req, res) => {
     res.json({

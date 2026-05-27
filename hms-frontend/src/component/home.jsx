@@ -1,74 +1,129 @@
-﻿import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import './Home.css'
-import { getToken } from '../utils/auth'
+﻿import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Home.css";
+import { getToken } from "../utils/auth";
 // Icon mapping for specializations
 const iconMap = {
-  Cardiologist: '❤️',
-  Orthopedics: '🦴',
-  Dermatologist: '✨',
-  Pediatrician: '👶',
-  Neurologist: '🧠',
-}
+  Cardiologist: "❤️",
+  Orthopedics: "🦴",
+  Dermatologist: "✨",
+  Pediatrician: "👶",
+  Neurologist: "🧠",
+};
 
 function Home() {
-  const [specializations, setSpecializations] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const navigate = useNavigate()
-  const token = getToken()
+  const [specializations, setSpecializations] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const token = getToken();
+
+  // useEffect(() => {
+  //   const fetchSpecializations = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const response = await fetch(
+  //         "http://localhost:5000/api/specialization",
+  //       );
+
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch specializations");
+  //       }
+
+  //       const result = await response.json();
+
+  //       const transformedData = result.data.map((spec) => ({
+
+  //         name: spec.specialization,
+  //         description: spec.description || "Professional medical services",
+  //         icon: iconMap[spec.specialization] || "🏥",
+
+  //         url: spec.image
+  //           ? `http://localhost:5000/${spec.image}`
+  //           : "https://images.unsplash.com/photo-1631217314831-e13741b1fad9?auto=format&fit=crop&w=1200&q=80",
+
+  //       }));
+
+  //       setSpecializations(transformedData);
+  //       setError(null);
+  //     } catch (err) {
+  //       setError(err.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchSpecializations();
+  // }, []);
 
   useEffect(() => {
     const fetchSpecializations = async () => {
       try {
-        setLoading(true)
-        const response = await fetch('http://localhost:5000/api/specialization')
+        setLoading(true);
+        const response = await fetch(
+          "http://localhost:5000/api/specialization",
+        );
 
         if (!response.ok) {
-          throw new Error('Failed to fetch specializations')
+          throw new Error("Failed to fetch specializations");
         }
 
-        const result = await response.json()
+        const result = await response.json();
 
-        const transformedData = result.data.map((spec) => ({
-          name: spec.specialization,
-          description: spec.description || 'Professional medical services',
-          icon: iconMap[spec.specialization] || '🏥',
-          // imageUrl:
-          //   imageMap[spec.specialization] ||
-          //   'https://images.unsplash.com/photo-1631217314831-e13741b1fad9?auto=format&fit=crop&w=1200&q=80',
-        }))
+        console.log("✅ API RESULT:", result);
 
-        setSpecializations(transformedData)
-        setError(null)
+        const transformedData = result.data.map((spec) => {
+          // ✅ DEBUG LOGS
+          console.log("👉 Raw spec object:", spec);
+          console.log("👉 Image path from DB:", spec.image);
+
+          const imageUrl = spec.image
+            ? `http://localhost:5000${spec.image.replace(/\\/g, "/")}`
+            : "https://images.unsplash.com/photo-1631217314831-e13741b1fad9?auto=format&fit=crop&w=1200&q=80";
+
+          console.log("👉 Final Image URL:", imageUrl);
+
+          return {
+            name: spec.specialization,
+            description: spec.description || "Professional medical services",
+            icon: iconMap[spec.specialization] || "🏥",
+            url: imageUrl,
+          };
+        });
+
+        console.log("✅ Transformed Data:", transformedData);
+
+        setSpecializations(transformedData);
+        setError(null);
       } catch (err) {
-        setError(err.message)
+        console.error("❌ Fetch Error:", err);
+        setError(err.message);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    fetchSpecializations()
-  }, [])
+    fetchSpecializations();
+  }, []);
 
   const scrollToDetail = (name) => {
-    const id = name.toLowerCase().replace(/\s+/g, '-')
+    const id = name.toLowerCase().replace(/\s+/g, "-");
     document.getElementById(id)?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    })
-  }
+      behavior: "smooth",
+      block: "start",
+    });
+  };
 
   const handleAction = (specName) => {
-    navigate(`/doctor/${encodeURIComponent(specName)}`)
-  }
-  const handleAppointment = () =>{
- if(token){navigate("/appointment")}
- else {
-  navigate("/signIn")
- }
-    
-  }
+    navigate(`/doctor/${encodeURIComponent(specName)}`);
+  };
+  const handleAppointment = () => {
+    if (token) {
+      navigate("/appointment");
+    } else {
+      navigate("/signIn");
+    }
+  };
 
   if (loading) {
     return (
@@ -76,7 +131,7 @@ function Home() {
         <h1 className="title">Doctor Specializations</h1>
         <p className="status-text">Loading specializations...</p>
       </div>
-    )
+    );
   }
 
   if (error) {
@@ -85,18 +140,19 @@ function Home() {
         <h1 className="title">Doctor Specializations</h1>
         <p className="error-text">Error: {error}</p>
       </div>
-    )
+    );
   }
 
   return (
     <div className="page">
-
-      <div className='title1'>
+      <div className="title1">
         <h1>Book an Appointment with Healthy Buddy</h1>
-        <button className='action-button' onClick={handleAppointment}>Book Appointment</button>
+        <button className="action-button" onClick={handleAppointment}>
+          Book Appointment
+        </button>
       </div>
       <h1 className="title">Doctor Specializations</h1>
-      
+
       <div className="card-grid">
         {specializations.map((specialization) => (
           <button
@@ -117,14 +173,36 @@ function Home() {
         <h2 className="section-title">Specialization Details</h2>
 
         {specializations.map((specialization) => {
-          const id = specialization.name.toLowerCase().replace(/\s+/g, '-')
+          const id = specialization.name.toLowerCase().replace(/\s+/g, "-");
+
           return (
             <div
               key={specialization.name}
               id={id}
               className="detail-card"
+              //             style={{
+              //               backgroundImage: `
+              //   linear-gradient(
+              //     to right,
+              //     rgba(10, 25, 70, 0.75) 0%,
+              //     rgba(10, 25, 70, 0.4) 40%,
+              //     rgba(10, 25, 70, 0.1) 70%,
+              //     transparent 100%
+              //   ),
+              //   url(${specialization.url})
+              // `,
+              //             }}
               style={{
-                backgroundImage: `linear-gradient(rgba(0, 22, 74, 0.55), rgba(9, 31, 82, 0.55)), url(${specialization.url})`,
+                backgroundImage: `
+    linear-gradient(
+      to right,
+      rgba(10, 25, 70, 0.75) 0%,
+      rgba(10, 25, 70, 0.4) 40%,
+      rgba(10, 25, 70, 0.1) 70%,
+      transparent 100%
+    ),
+    url(${specialization.url})
+  `,
               }}
             >
               <div className="detail-content">
@@ -138,11 +216,11 @@ function Home() {
                 </button>
               </div>
             </div>
-          )
+          );
         })}
       </div>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
